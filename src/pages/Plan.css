@@ -1,0 +1,397 @@
+.plan-page {
+  min-height: 100vh;
+  padding: 120px 24px 80px;
+  position: relative;
+}
+
+.plan-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 20%, rgba(232, 120, 138, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 10% 80%, rgba(212, 165, 176, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.plan-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.plan-header-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.plan-header h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.plan-header p {
+  color: var(--text-mid);
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+/* STEPS */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.step-item.active { color: var(--rose); }
+.step-item.done { color: var(--rose-deep); }
+
+.step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.step-item.active .step-circle,
+.step-item.done .step-circle {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: white;
+}
+
+/* CALENDAR */
+.calendar-card {
+  max-width: 520px;
+  margin: 0 auto 24px;
+  padding: 32px;
+}
+
+.cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.cal-month-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--text-dark);
+}
+
+.cal-nav {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-mid);
+  transition: all 0.3s;
+}
+
+.cal-nav:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.cal-weekday {
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  padding: 4px 0;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  position: relative;
+  transition: all 0.2s;
+}
+
+.cal-day.active {
+  cursor: pointer;
+}
+
+.cal-day.active:not(.past):hover {
+  background: rgba(232, 120, 138, 0.12);
+  color: var(--rose);
+}
+
+.cal-day.past {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.cal-day.selected {
+  background: var(--rose) !important;
+  color: white !important;
+}
+
+.cal-day-dot {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--rose);
+  z-index: -1;
+}
+
+.selected-date-preview {
+  max-width: 520px;
+  margin: 0 auto 24px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+}
+
+.selected-date-preview strong {
+  display: block;
+  color: var(--rose);
+  font-size: 1rem;
+}
+
+.step-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* DETAILS STEP */
+.details-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.details-left {
+  padding: 28px;
+  position: sticky;
+  top: 100px;
+}
+
+.detail-date-badge {
+  background: linear-gradient(135deg, rgba(232, 120, 138, 0.15), rgba(212, 165, 176, 0.1));
+  border: 1px solid rgba(232, 120, 138, 0.2);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  color: var(--rose);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+.emoji-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.emoji-btn {
+  width: 40px;
+  height: 40px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-btn.selected,
+.emoji-btn:hover {
+  border-color: var(--rose);
+  background: rgba(232, 120, 138, 0.1);
+  transform: scale(1.1);
+}
+
+.mood-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mood-btn {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--text-mid);
+  transition: all 0.2s;
+  font-family: var(--font-sans);
+}
+
+.mood-btn.selected,
+.mood-btn:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+  background: rgba(232, 120, 138, 0.08);
+}
+
+/* PLACES */
+.places-header {
+  margin-bottom: 20px;
+}
+
+.places-header h3 {
+  font-size: 1.6rem;
+  color: var(--text-dark);
+}
+
+.places-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+.places-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.place-card {
+  padding: 24px;
+}
+
+.place-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.place-number {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.place-card-header h4 {
+  flex: 1;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  letter-spacing: 0.05em;
+}
+
+.place-remove {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+  display: flex;
+}
+
+.place-remove:hover { color: var(--rose-deep); }
+
+.place-times {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.add-place-btn {
+  width: 100%;
+  background: transparent;
+  border: 1.5px dashed var(--mauve);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text-mid);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.add-place-btn:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+  background: rgba(232, 120, 138, 0.05);
+}
+
+@media (max-width: 768px) {
+  .details-grid { grid-template-columns: 1fr; }
+  .details-left { position: static; }
+}

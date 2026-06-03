@@ -1,0 +1,319 @@
+.upcoming-page {
+  min-height: 100vh;
+  padding: 120px 24px 80px;
+  position: relative;
+}
+
+.upcoming-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 30% 20%, rgba(232, 120, 138, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 80%, rgba(212, 165, 176, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.upcoming-container {
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.page-header-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.page-header h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.page-header p {
+  color: var(--text-mid);
+  font-style: italic;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+}
+
+.dates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* DATE CARD */
+.date-card {
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.date-card:hover {
+  box-shadow: 0 12px 40px var(--shadow-rose);
+}
+
+.date-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px;
+  cursor: pointer;
+}
+
+.date-card-emoji {
+  font-size: 2.8rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.date-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.date-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.countdown {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+.countdown.today { background: rgba(232, 120, 138, 0.2); color: var(--rose-deep); }
+.countdown.tomorrow { background: rgba(244, 160, 175, 0.2); color: var(--rose); }
+.countdown.soon { background: rgba(212, 165, 176, 0.2); color: var(--burgundy); }
+.countdown.far { background: var(--glass); color: var(--text-light); border: 1px solid var(--glass-border); }
+
+.mood-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-light);
+}
+
+.date-card-info h3 {
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.date-card-date,
+.date-card-places {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  margin-top: 4px;
+}
+
+.date-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.delete-btn, .expand-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.delete-btn {
+  color: var(--text-light);
+}
+
+.delete-btn:hover { color: var(--rose-deep); background: rgba(196, 86, 106, 0.1); }
+
+.expand-btn { color: var(--text-mid); }
+.expand-btn:hover { color: var(--rose); }
+
+/* BODY */
+.date-card-body {
+  overflow: hidden;
+}
+
+.date-card-body-inner {
+  padding: 0 28px 28px;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 24px;
+}
+
+.body-section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rose);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* TIMELINE */
+.place-timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  position: relative;
+}
+
+.timeline-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 20px;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--rose);
+  border-radius: 50%;
+  margin-top: 14px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(232, 120, 138, 0.2);
+}
+
+.timeline-connector {
+  width: 1.5px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--rose-light), transparent);
+  margin: 4px 0;
+  min-height: 24px;
+}
+
+.timeline-content {
+  flex: 1;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.timeline-header h4 {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.timeline-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--rose);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.timeline-address {
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.maps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--rose);
+  text-decoration: none;
+  font-size: 0.75rem;
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+.timeline-notes {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.date-notes {
+  margin-top: 20px;
+}
+
+.date-notes-text {
+  font-style: italic;
+  font-family: var(--font-serif);
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* EMPTY */
+.empty-state {
+  text-align: center;
+  padding: 60px 40px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.empty-emoji {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+}
+
+.empty-state h3 {
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  color: var(--text-mid);
+  margin-bottom: 24px;
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+.upcoming-footer {
+  text-align: center;
+  margin-top: 40px;
+}
