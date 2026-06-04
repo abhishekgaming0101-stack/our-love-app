@@ -3,7 +3,6 @@ import { Toaster } from 'react-hot-toast';
 import { AppProvider } from './context/AppContext';
 import Navbar from './components/Navbar';
 import Cursor from './components/Cursor';
-import Petals from './components/Petals';
 import Home from './pages/Home';
 import PlanDate from './pages/Plan';
 import Upcoming from './pages/Upcoming';
@@ -15,7 +14,6 @@ export default function App() {
     <AppProvider>
       <BrowserRouter>
         <Cursor />
-        <Petals count={16} />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -28,13 +26,14 @@ export default function App() {
           position="bottom-center"
           toastOptions={{
             style: {
-              background: 'rgba(255,255,255,0.9)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(232,120,138,0.2)',
-              color: '#2d1a20',
+              background: '#1a0f14',
+              border: '1px solid rgba(232,64,90,0.25)',
+              color: '#f0e8e8',
               fontFamily: 'DM Sans, sans-serif',
-              borderRadius: '50px',
-              padding: '12px 24px',
+              fontSize: '0.85rem',
+              letterSpacing: '0.05em',
+              borderRadius: '2px',
+              padding: '14px 24px',
             },
           }}
         />

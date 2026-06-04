@@ -14,54 +14,28 @@ const NAV_LINKS = [
 export default function Navbar() {
   const location = useLocation();
   const { theme, setTheme } = useApp();
-
   return (
-    <motion.nav
-      className="navbar glass"
+    <motion.nav className="navbar glass"
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.8, ease: [0.16,1,0.3,1] }}
     >
       <Link to="/" className="nav-brand">
-        <motion.div
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-        >
-          <Heart size={20} fill="var(--rose)" color="var(--rose)" />
+        <motion.div animate={{ scale:[1,1.25,1] }} transition={{ repeat:Infinity, duration:1.8 }}>
+          <Heart size={18} fill="var(--rose)" color="var(--rose)" style={{filter:'drop-shadow(0 0 6px #ff2d55)'}} />
         </motion.div>
         <span className="nav-brand-text">Us</span>
       </Link>
-
       <div className="nav-links">
-        {NAV_LINKS.map(({ to, label, emoji }) => {
-          const active = location.pathname === to;
-          return (
-            <Link key={to} to={to} className={`nav-link ${active ? 'active' : ''}`}>
-              <span className="nav-link-emoji">{emoji}</span>
-              <span className="nav-link-label">{label}</span>
-              {active && (
-                <motion.div
-                  className="nav-link-dot"
-                  layoutId="nav-dot"
-                  transition={{ type: 'spring', bounce: 0.3 }}
-                />
-              )}
-            </Link>
-          );
-        })}
+        {NAV_LINKS.map(({ to, label, emoji }) => (
+          <Link key={to} to={to} className={`nav-link ${location.pathname === to ? 'active' : ''}`}>
+            <span className="nav-link-emoji">{emoji}</span>
+            <span>{label}</span>
+          </Link>
+        ))}
       </div>
-
-      <button
-        className="theme-toggle"
-        onClick={() => setTheme(t => t === 'light' ? 'dark' : 'light')}
-        aria-label="Toggle theme"
-      >
-        <motion.div
-          animate={{ rotate: theme === 'dark' ? 360 : 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </motion.div>
+      <button className="theme-toggle" onClick={() => setTheme(t => t==='light'?'dark':'light')}>
+        {theme==='dark' ? <Sun size={16}/> : <Moon size={16}/>}
       </button>
     </motion.nav>
   );

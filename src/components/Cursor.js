@@ -1,61 +1,53 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 export default function Cursor() {
-  const dotRef = useRef(null);
-  const ringRef = useRef(null);
-  const pos = useRef({ x: 0, y: 0 });
-  const ring = useRef({ x: 0, y: 0 });
-  const raf = useRef(null);
-
   useEffect(() => {
-    const dot = dotRef.current;
-    const ringEl = ringRef.current;
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    if (!dot || !ring) return;
+
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    let raf;
 
     const onMove = (e) => {
-      pos.current = { x: e.clientX, y: e.clientY };
-      dot.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
     };
 
     const animate = () => {
-      ring.current.x += (pos.current.x - ring.current.x) * 0.12;
-      ring.current.y += (pos.current.y - ring.current.y) * 0.12;
-      ringEl.style.transform = `translate(${ring.current.x - 18}px, ${ring.current.y - 18}px)`;
-      raf.current = requestAnimationFrame(animate);
+      rx += (mx - rx) * 0.1;
+      ry += (my - ry) * 0.1;
+      ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
+      raf = requestAnimationFrame(animate);
     };
 
-    const onHoverIn = () => ringEl.classList.add('hovering');
-    const onHoverOut = () => ringEl.classList.remove('hovering');
-
     window.addEventListener('mousemove', onMove);
-    raf.current = requestAnimationFrame(animate);
+    raf = requestAnimationFrame(animate);
 
-    document.querySelectorAll('a, button, [data-hover]').forEach(el => {
-      el.addEventListener('mouseenter', onHoverIn);
-      el.addEventListener('mouseleave', onHoverOut);
-    });
+    const onIn = () => ring.classList.add('hover');
+    const onOut = () => ring.classList.remove('hover');
 
-    // Re-attach on DOM changes
-    const observer = new MutationObserver(() => {
-      document.querySelectorAll('a, button, [data-hover]').forEach(el => {
-        el.removeEventListener('mouseenter', onHoverIn);
-        el.removeEventListener('mouseleave', onHoverOut);
-        el.addEventListener('mouseenter', onHoverIn);
-        el.addEventListener('mouseleave', onHoverOut);
+    const obs = new MutationObserver(() => {
+      document.querySelectorAll('a,button,[data-hover]').forEach(el => {
+        el.removeEventListener('mouseenter', onIn);
+        el.removeEventListener('mouseleave', onOut);
+        el.addEventListener('mouseenter', onIn);
+        el.addEventListener('mouseleave', onOut);
       });
     });
-    observer.observe(document.body, { childList: true, subtree: true });
+    obs.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       window.removeEventListener('mousemove', onMove);
-      cancelAnimationFrame(raf.current);
-      observer.disconnect();
+      cancelAnimationFrame(raf);
+      obs.disconnect();
     };
   }, []);
 
   return (
     <>
-      <div className="cursor-dot" ref={dotRef} />
-      <div className="cursor-ring" ref={ringRef} />
+      <div id="cursor-dot" />
+      <div id="cursor-ring" />
     </>
   );
 }
