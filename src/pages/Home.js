@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
@@ -9,18 +8,18 @@ const TAGLINE = 'Every moment with you is a forever I choose';
 function OrbitRing({ size, duration, reverse, opacity=1 }) {
   return (
     <motion.div style={{
-      position:'absolute',borderRadius:'50%',
-      width:size,height:size,
-      border:`1px solid rgba(167,139,250,${opacity * 0.15})`,
-      top:'50%',left:'50%',x:'-50%',y:'-50%',
+      position:'absolute', borderRadius:'50%',
+      width:size, height:size,
+      border:`1px solid rgba(167,139,250,${opacity*0.15})`,
+      top:'50%', left:'50%', x:'-50%', y:'-50%',
     }}
       animate={{ rotate: reverse ? -360 : 360 }}
       transition={{ duration, repeat:Infinity, ease:'linear' }}
     >
       <div style={{
-        position:'absolute',width:7,height:7,
-        background:'var(--accent)',borderRadius:'50%',
-        top:-3.5,left:'50%',transform:'translateX(-50%)',
+        position:'absolute', width:7, height:7,
+        background:'var(--accent)', borderRadius:'50%',
+        top:-3.5, left:'50%', transform:'translateX(-50%)',
         boxShadow:'0 0 14px #a78bfa,0 0 28px #a78bfa',
         opacity,
       }}/>
@@ -31,12 +30,6 @@ function OrbitRing({ size, duration, reverse, opacity=1 }) {
 export default function Home() {
   return (
     <div className="home">
-      <div className="home-aurora">
-        <div className="aurora-blob"/>
-        <div className="aurora-blob"/>
-        <div className="aurora-blob"/>
-      </div>
-
       <div className="orbit-wrap">
         <OrbitRing size="38%" duration={18}/>
         <OrbitRing size="62%" duration={28} reverse opacity={0.7}/>
@@ -72,9 +65,9 @@ export default function Home() {
           initial={{opacity:0,y:30}} animate={{opacity:1,y:0}}
           transition={{delay:.8,duration:.7}}>
           {[
-            {to:'/plan',   icon:'🗓️', label:'Plan a Date'},
-            {to:'/upcoming',icon:'✨', label:'Coming Up'},
-            {to:'/memories',icon:'📸', label:'Memories'},
+            {to:'/plan',    icon:'🗓️', label:'Plan a Date'},
+            {to:'/upcoming',icon:'✨',  label:'Coming Up'},
+            {to:'/memories',icon:'📸',  label:'Memories'},
           ].map(({to,icon,label},i)=>(
             <motion.div key={to}
               initial={{opacity:0,y:30}} animate={{opacity:1,y:0}}

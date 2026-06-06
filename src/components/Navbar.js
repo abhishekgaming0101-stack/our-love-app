@@ -5,7 +5,7 @@ import './Navbar.css';
 
 const NAV = [
   { to:'/', label:'Home', emoji:'🏠' },
-  { to:'/plan', label:'Plan a Date', emoji:'🗓️' },
+  { to:'/plan', label:'Plan', emoji:'🗓️' },
   { to:'/upcoming', label:'Coming Up', emoji:'✨' },
   { to:'/memories', label:'Memories', emoji:'📸' },
 ];
@@ -23,7 +23,7 @@ export default function Navbar() {
           animate={{ scale:[1,1.3,1] }}
           transition={{ repeat:Infinity, duration:1.8, ease:'easeInOut' }}
         >
-          <Heart size={15} fill="var(--accent)" color="var(--accent)"
+          <Heart size={14} fill="var(--accent)" color="var(--accent)"
             style={{ filter:'drop-shadow(0 0 6px #a78bfa)' }}/>
         </motion.div>
         <span className="nav-brand-text">

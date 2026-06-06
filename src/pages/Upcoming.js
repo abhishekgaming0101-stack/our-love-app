@@ -113,7 +113,7 @@ export default function Upcoming() {
   const { upcomingDates, removeDate } = useApp();
   return (
     <div className="upcoming-page">
-      <div className="upcoming-bg"/>
+      
       <div className="upcoming-container">
 
         <motion.div className="page-header"

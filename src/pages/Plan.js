@@ -73,7 +73,7 @@ export default function PlanDate() {
 
   return (
     <div className="plan-page">
-      <div className="plan-bg" />
+      
       <div className="plan-container">
         <motion.div className="plan-header" initial={{opacity:0,y:-20}} animate={{opacity:1,y:0}}>
           <h1>Plan a Date 🗓️</h1>
