@@ -38,7 +38,7 @@ export default function PlanDate() {
   const calDays = [];
   for(let i=0;i<firstDay;i++) calDays.push(null);
   for(let d=1;d<=daysInMonth;d++) calDays.push(d);
-  const isPast = d => d && new Date(year,month,d) < new Date(today.getFullYear(),today.getMonth(),today.getDate());
+  const isPast = d => false; // Allow all dates including past
   const isSelected = d => d && selectedDate && selectedDate.getDate()===d && selectedDate.getMonth()===month && selectedDate.getFullYear()===year;
 
   // Swipe to change month on calendar
@@ -60,9 +60,10 @@ export default function PlanDate() {
   const handleSave = async () => {
     setSaving(true);
     try {
+      const isPastDate = selectedDate < new Date(today.getFullYear(), today.getMonth(), today.getDate());
       await addDate({
         title: title.trim(), date: format(selectedDate,'yyyy-MM-dd'),
-        status: 'upcoming', mood: 'romantic', cover_emoji: emoji,
+        status: isPastDate ? 'past' : 'upcoming', mood: 'romantic', cover_emoji: emoji,
         places: places.filter(p=>p.name.trim()), notes:'', photos:[],
       });
       navigate('/upcoming');
