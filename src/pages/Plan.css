@@ -6,7 +6,7 @@
 }
 .plan-bg {
   position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background: radial-gradient(ellipse 60% 50% at 70% 30%, rgba(255,45,85,0.12) 0%, transparent 60%),
+  background: radial-gradient(ellipse 60% 50% at 70% 30%, rgba(167,139,250,0.12) 0%, transparent 60%),
               radial-gradient(ellipse 40% 40% at 20% 80%, rgba(180,0,50,0.08) 0%, transparent 60%);
 }
 .plan-container { max-width: 680px; width: 100%; position: relative; z-index: 1; }
@@ -30,8 +30,8 @@
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--text3); position: relative;
 }
-.wizard-step.active { color: var(--rose); }
-.wizard-step.done { color: rgba(255,45,85,0.6); }
+.wizard-step.active { color: var(--accent); }
+.wizard-step.done { color: rgba(167,139,250,0.6); }
 .step-num {
   width: 28px; height: 28px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -39,10 +39,10 @@
   border: 1.5px solid currentColor;
   background: transparent; transition: all 0.3s;
 }
-.wizard-step.active .step-num { background: var(--rose); border-color: var(--rose); color: #fff; box-shadow: 0 0 16px rgba(255,45,85,0.5); }
-.wizard-step.done .step-num { background: rgba(255,45,85,0.2); }
+.wizard-step.active .step-num { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 0 16px rgba(167,139,250,0.5); }
+.wizard-step.done .step-num { background: rgba(167,139,250,0.2); }
 .step-line { width: 48px; height: 1px; background: rgba(255,255,255,0.08); margin: 0 8px; }
-.step-line.done { background: rgba(255,45,85,0.3); }
+.step-line.done { background: rgba(167,139,250,0.3); }
 
 /* WIZARD CARD */
 .wizard-card {
@@ -75,7 +75,7 @@
   display: flex; align-items: center; justify-content: center;
   transition: all 0.2s;
 }
-.cal-nav:hover { border-color: var(--rose); color: var(--rose); box-shadow: 0 0 12px rgba(255,45,85,0.3); }
+.cal-nav:hover { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 12px rgba(167,139,250,0.3); }
 
 .cal-weekdays {
   display: grid; grid-template-columns: repeat(7,1fr);
@@ -92,11 +92,11 @@
   border-radius: 50%; font-size: 0.85rem; color: var(--text2);
   cursor: pointer; transition: all 0.2s; position: relative;
 }
-.cal-day:hover:not(.past) { background: rgba(255,45,85,0.15); color: var(--rose); }
+.cal-day:hover:not(.past) { background: rgba(167,139,250,0.15); color: var(--accent); }
 .cal-day.past { opacity: 0.2; cursor: not-allowed; }
 .cal-day.selected {
-  background: var(--rose) !important; color: #fff !important;
-  box-shadow: 0 0 20px rgba(255,45,85,0.6);
+  background: var(--accent) !important; color: #fff !important;
+  box-shadow: 0 0 20px rgba(167,139,250,0.6);
 }
 .cal-day.empty { cursor: default; }
 
@@ -112,7 +112,7 @@
   display: flex; align-items: center; gap: 12px;
   font-size: 0.9rem;
 }
-.selected-preview strong { color: var(--rose); display: block; font-size: 1rem; }
+.selected-preview strong { color: var(--accent); display: block; font-size: 1rem; }
 .selected-preview span { color: var(--text3); font-size: 0.8rem; }
 
 /* STEP 2 – NAME */
@@ -126,7 +126,7 @@
   color: #fff;
 }
 .name-input-big input:focus {
-  border-bottom-color: var(--rose);
+  border-bottom-color: var(--accent);
   box-shadow: none; background: transparent;
 }
 
@@ -140,9 +140,9 @@
   display: flex; align-items: center; justify-content: center;
 }
 .emoji-btn:hover, .emoji-btn.selected {
-  border-color: var(--rose);
-  background: rgba(255,45,85,0.12);
-  box-shadow: 0 0 12px rgba(255,45,85,0.3);
+  border-color: var(--accent);
+  background: rgba(167,139,250,0.12);
+  box-shadow: 0 0 12px rgba(167,139,250,0.3);
   transform: scale(1.1);
 }
 
@@ -152,10 +152,10 @@
 }
 .place-step-num {
   width: 32px; height: 32px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--rose), var(--deep));
+  background: linear-gradient(135deg, var(--accent), var(--deep2));
   display: flex; align-items: center; justify-content: center;
   font-size: 0.8rem; font-weight: 700; color: #fff;
-  box-shadow: 0 0 16px rgba(255,45,85,0.4); flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(167,139,250,0.4); flex-shrink: 0;
 }
 
 .time-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -171,8 +171,8 @@
   font-family: var(--font-sans);
 }
 .activity-tag:hover, .activity-tag.selected {
-  border-color: var(--rose); color: var(--rose);
-  background: rgba(255,45,85,0.1);
+  border-color: var(--accent); color: var(--accent);
+  background: rgba(167,139,250,0.1);
 }
 
 /* ACTIONS */
@@ -187,25 +187,25 @@
 .place-chip {
   display: flex; align-items: center; gap: 6px;
   padding: 6px 14px; border-radius: 50px;
-  background: rgba(255,45,85,0.1);
-  border: 1px solid rgba(255,45,85,0.2);
+  background: rgba(167,139,250,0.1);
+  border: 1px solid rgba(167,139,250,0.2);
   font-size: 0.78rem; color: var(--text2);
 }
 .place-chip-num {
   width: 18px; height: 18px; border-radius: 50%;
-  background: var(--rose); color: #fff;
+  background: var(--accent); color: #fff;
   font-size: 0.65rem; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
 .add-stop-btn {
   padding: 10px 20px; border-radius: 50px;
   background: transparent;
-  border: 1px dashed rgba(255,45,85,0.3);
-  color: var(--rose); font-family: var(--font-sans);
+  border: 1px dashed rgba(167,139,250,0.3);
+  color: var(--accent); font-family: var(--font-sans);
   font-size: 0.8rem; cursor: pointer;
   transition: all 0.3s; display: flex; align-items: center; gap: 6px;
 }
-.add-stop-btn:hover { background: rgba(255,45,85,0.08); border-color: var(--rose); }
+.add-stop-btn:hover { background: rgba(167,139,250,0.08); border-color: var(--accent); }
 
 @media(max-width:600px) {
   .wizard-card { padding: 24px 20px; }

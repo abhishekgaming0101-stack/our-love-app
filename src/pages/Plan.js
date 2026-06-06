@@ -295,7 +295,7 @@ export default function PlanDate() {
                       <div className="place-step-num">{i+1}</div>
                       <div>
                         <div style={{fontWeight:600,color:'#fff',fontSize:'0.95rem'}}>{p.name}</div>
-                        {p.start_time && <div style={{fontSize:'0.78rem',color:'var(--rose)'}}>{p.start_time}{p.end_time?` – ${p.end_time}`:''}</div>}
+                        {p.start_time && <div style={{fontSize:'0.78rem',color:'var(--accent)'}}>{p.start_time}{p.end_time?` – ${p.end_time}`:''}</div>}
                         {p.address && <div style={{fontSize:'0.78rem',color:'var(--text3)'}}>{p.address}</div>}
                       </div>
                     </div>

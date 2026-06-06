@@ -43,7 +43,7 @@ function PhotoUpload({ dateId, photos = [], onAdd }) {
         style={{ border: '1px dashed rgba(232,64,90,0.3)', borderRadius: '2px', padding: '32px', textAlign: 'center', cursor: 'pointer', color: 'var(--text3)', fontSize: '0.8rem', letterSpacing: '0.1em', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', transition: 'all 0.3s' }}
       >
         <input ref={fileRef} type="file" multiple accept="image/*,video/*" style={{ display: 'none' }} onChange={e => handle(Array.from(e.target.files))} />
-        {uploading ? <span style={{ color: 'var(--rose)' }}>Uploading…</span> : <><Upload size={14} /> Drop photos & videos or click to upload</>}
+        {uploading ? <span style={{ color: 'var(--accent)' }}>Uploading…</span> : <><Upload size={14} /> Drop photos & videos or click to upload</>}
       </div>
     </div>
   );
@@ -69,7 +69,7 @@ function MemoryDetail() {
           <div style={{ flex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
               <span className="tag">{date.mood}</span>
-              <span style={{ fontSize: '0.8rem', color: 'var(--rose)' }}>{format(new Date(date.date), 'MMM do, yyyy')}</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--accent)' }}>{format(new Date(date.date), 'MMM do, yyyy')}</span>
             </div>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem,4vw,3.5rem)', fontWeight: 400, color: 'var(--text)', lineHeight: 1 }}>{date.title}</h1>
           </div>
@@ -80,26 +80,26 @@ function MemoryDetail() {
 
         {date.notes && (
           <div style={{ padding: '24px', background: 'rgba(232,64,90,0.04)', border: '1px solid rgba(232,64,90,0.15)', borderRadius: '2px', marginBottom: '32px', display: 'flex', gap: '12px' }}>
-            <Heart size={14} fill="var(--rose)" color="var(--rose)" style={{ flexShrink: 0, marginTop: 2 }} />
+            <Heart size={14} fill="var(--accent)" color="var(--accent)" style={{ flexShrink: 0, marginTop: 2 }} />
             <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--text2)', fontSize: '0.95rem', lineHeight: 1.7 }}>"{date.notes}"</p>
           </div>
         )}
 
         {date.places?.filter(p=>p.name).length > 0 && (
           <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border)', borderRadius: '4px', padding: '32px', marginBottom: '32px' }}>
-            <div style={{ fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--rose)', marginBottom: '24px', fontWeight: 400 }}>The Itinerary</div>
+            <div style={{ fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px', fontWeight: 400 }}>The Itinerary</div>
             {date.places.filter(p=>p.name).map((p, i, arr) => (
               <div key={p.id} style={{ display: 'flex', gap: '16px', marginBottom: i < arr.length-1 ? 8 : 0 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 20 }}>
-                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--rose)', flexShrink: 0, marginTop: 14, boxShadow: '0 0 8px var(--rose)' }} />
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--accent)', flexShrink: 0, marginTop: 14, boxShadow: '0 0 8px var(--accent)' }} />
                   {i < arr.length-1 && <div style={{ width: 1, flex: 1, background: 'linear-gradient(to bottom, rgba(232,64,90,0.4),transparent)', margin: '4px 0', minHeight: 20 }} />}
                 </div>
                 <div style={{ flex: 1, padding: '10px 16px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--border)', borderRadius: '2px', marginBottom: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
                     <span style={{ fontWeight: 500, color: 'var(--text)', fontSize: '0.9rem' }}>{p.name}</span>
-                    {p.start_time && <span style={{ fontSize: '0.75rem', color: 'var(--rose)', display: 'flex', alignItems: 'center', gap: 4 }}><Clock size={11} />{p.start_time}{p.end_time?` – ${p.end_time}`:''}</span>}
+                    {p.start_time && <span style={{ fontSize: '0.75rem', color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: 4 }}><Clock size={11} />{p.start_time}{p.end_time?` – ${p.end_time}`:''}</span>}
                   </div>
-                  {p.address && <div style={{ fontSize: '0.78rem', color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 4 }}><MapPin size={11} />{p.address}{p.maps_url&&<a href={p.maps_url} target="_blank" rel="noreferrer" style={{ color: 'var(--rose)', marginLeft: 6, fontSize: '0.72rem' }}><ExternalLink size={10}/> Maps</a>}</div>}
+                  {p.address && <div style={{ fontSize: '0.78rem', color: 'var(--text3)', display: 'flex', alignItems: 'center', gap: 4 }}><MapPin size={11} />{p.address}{p.maps_url&&<a href={p.maps_url} target="_blank" rel="noreferrer" style={{ color: 'var(--accent)', marginLeft: 6, fontSize: '0.72rem' }}><ExternalLink size={10}/> Maps</a>}</div>}
                   {p.notes && <div style={{ fontSize: '0.8rem', color: 'var(--text2)', fontStyle: 'italic', marginTop: 4 }}>"{p.notes}"</div>}
                 </div>
               </div>
@@ -108,7 +108,7 @@ function MemoryDetail() {
         )}
 
         <div style={{ border: '1px solid var(--border)', borderRadius: '4px', padding: '32px' }}>
-          <div style={{ fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--rose)', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Camera size={12} /> Photos & Videos
           </div>
           <PhotoUpload dateId={id} photos={date.photos || []} onAdd={photos => editDate(id, { photos })} />
@@ -127,7 +127,7 @@ function MemoriesList() {
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: '64px' }}>
           <div className="tag" style={{ marginBottom: '16px' }}>Archive</div>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem,5vw,4.5rem)', fontWeight: 400, color: 'var(--text)', lineHeight: 1 }}>
-            Our <em style={{ color: 'var(--rose)' }}>Memories</em>
+            Our <em style={{ color: 'var(--accent)' }}>Memories</em>
           </h1>
         </motion.div>
 
@@ -151,9 +151,9 @@ function MemoriesList() {
                     </div>
                     <div style={{ fontSize: '1.5rem', marginBottom: '12px' }}>{d.cover_emoji || '💕'}</div>
                     <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', color: 'var(--text)', fontWeight: 400, marginBottom: '8px', lineHeight: 1.2 }}>{d.title}</h3>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--rose)', letterSpacing: '0.08em' }}>{format(new Date(d.date), 'MMM do, yyyy')}</p>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--accent)', letterSpacing: '0.08em' }}>{format(new Date(d.date), 'MMM do, yyyy')}</p>
                     {d.photos?.length > 0 && <p style={{ fontSize: '0.7rem', color: 'var(--text3)', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}><Camera size={10} /> {d.photos.length} photo{d.photos.length>1?'s':''}</p>}
-                    <div style={{ position: 'absolute', bottom: 0, left: 0, right: '40%', height: '1px', background: 'linear-gradient(90deg, var(--rose), transparent)', opacity: 0.3, transform: 'translateY(32px)' }} />
+                    <div style={{ position: 'absolute', bottom: 0, left: 0, right: '40%', height: '1px', background: 'linear-gradient(90deg, var(--accent), transparent)', opacity: 0.3, transform: 'translateY(32px)' }} />
                   </div>
                 </Link>
               </motion.div>
